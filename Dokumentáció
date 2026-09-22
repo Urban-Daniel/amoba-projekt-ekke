@@ -1,0 +1,46 @@
+Tic-Tac-Toe rendszer dokumentáció
+1. Rendszerterv
+1.1. A rendszer célja
+A Tic-Tac-Toe rendszer egy egyszerű kétjátékos játék, amelyben a játékosok felváltva helyezik el saját jelüket egy 3×3-as játéktáblán. Az egyik játékos X, a másik játékos O jelet használ.
+A játék célja, hogy egy játékos három saját jelet helyezzen el egymás mellett vízszintesen, függőlegesen vagy átlósan.
+1.2. A rendszer felépítése
+A rendszer fő részei:
+•	Játéktábla: megjeleníti a 3×3-as játékmezőt.
+•	Játékmenet-kezelő: figyeli a játékosok lépéseit és váltogatja a játékosokat.
+•	Győzelemvizsgáló modul: ellenőrzi, hogy kialakult-e három azonos jel egy sorban.
+•	Döntetlenvizsgáló modul: ellenőrzi, hogy megtelt-e a tábla győztes nélkül.
+•	Új játék modul: lehetővé teszi a játék újraindítását.
+Egyszerűsített felépítés:
+Játékos
+   │
+   ▼
+Felhasználói felület
+   │
+   ▼
+Játékmenet-kezelő
+   │
+   ├── Győzelem ellenőrzése
+   ├── Döntetlen ellenőrzése
+   └── Játékosváltás
+1.3. Fő komponensek
+Játéktábla komponens
+A 3×3-as mezőt jeleníti meg, és lehetővé teszi egy üres mező kiválasztását.
+Játékmenet komponens
+Nyilvántartja, hogy melyik játékos következik, valamint kezeli a játékosok lépéseit.
+Győzelemvizsgáló komponens
+Minden lépés után ellenőrzi a nyerő kombinációkat:
+•	3 vízszintes sor,
+•	3 függőleges oszlop,
+•	2 átló.
+Döntetlenvizsgáló komponens
+Ha minden mező foglalt, és egyik játékos sem nyert, a rendszer döntetlent jelez.
+Új játék komponens
+A játék végét követően lehetővé teszi a tábla alaphelyzetbe állítását.
+1.4. Alkalmazott technológiák
+A rendszer például az alábbi technológiákkal készíthető:
+•	HTML: a játéktábla szerkezete
+•	CSS: a játék felületének megjelenítése
+•	JavaScript: a játékmenet és a játékszabályok megvalósítása
+•	Git: forráskód verziókezelése
+A játék működéséhez nincs szükség külön adatbázisra, mivel egy egyszerű játék során az adatok csak ideiglenesen, a böngészőben tárolhatók.
+________________________________________
