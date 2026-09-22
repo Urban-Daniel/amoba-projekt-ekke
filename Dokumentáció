@@ -38,9 +38,4 @@ Ha minden mező foglalt, és egyik játékos sem nyert, a rendszer döntetlent j
 A játék végét követően lehetővé teszi a tábla alaphelyzetbe állítását.
 1.4. Alkalmazott technológiák
 A rendszer például az alábbi technológiákkal készíthető:
-•	HTML: a játéktábla szerkezete
-•	CSS: a játék felületének megjelenítése
-•	JavaScript: a játékmenet és a játékszabályok megvalósítása
-•	Git: forráskód verziókezelése
-A játék működéséhez nincs szükség külön adatbázisra, mivel egy egyszerű játék során az adatok csak ideiglenesen, a böngészőben tárolhatók.
 ________________________________________
