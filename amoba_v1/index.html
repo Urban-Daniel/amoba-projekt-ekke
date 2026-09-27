@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amőba | Játékos vs. Gép</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="jatekter">
+
+    <header class="fejlec">
+      <h1 class="cim">Amőba</h1>
+      <p class="alcim">Te vagy az <span class="jelzo jelzo--x">X</span>, a gép az <span class="jelzo jelzo--o">O</span></p>
+    </header>
+
+    <section class="allapotsav" aria-live="polite">
+      <p id="statuszSzoveg" class="statusz-szoveg">A te köröd következik</p>
+    </section>
+
+    <section class="tabla-keret">
+      <div id="tabla" class="tabla" role="grid" aria-label="Amőba tábla">
+       
+      </div>
+    </section>
+
+    <section class="eredmenyek" aria-label="Eredményjelző">
+      <div class="eredmeny eredmeny--x">
+        <span class="eredmeny-cimke">Te (X)</span>
+        <span id="pontX" class="eredmeny-szam">0</span>
+      </div>
+      <div class="eredmeny eredmeny--dontetlen">
+        <span class="eredmeny-cimke">Döntetlen</span>
+        <span id="pontDontetlen" class="eredmeny-szam">0</span>
+      </div>
+      <div class="eredmeny eredmeny--o">
+        <span class="eredmeny-cimke">Gép (O)</span>
+        <span id="pontO" class="eredmeny-szam">0</span>
+      </div>
+    </section>
+
+    <footer class="lablec">
+      <button id="ujjatekGomb" class="gomb-uj-jatek" type="button">Új játék</button>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

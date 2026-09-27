@@ -1,0 +1,261 @@
+
+
+:root {
+  --szin-hatter: #12141c;
+  --szin-panel: #1b1e2b;
+  --szin-panel-vilagos: #232739;
+  --szin-racs: #2e3348;
+  --szin-szoveg: #eceafc;
+  --szin-szoveg-halvany: #8f92ac;
+
+  --szin-x: #59d9b3;
+  --szin-x-halvany: rgba(89, 217, 179, 0.12);
+  --szin-o: #f0865a;
+  --szin-o-halvany: rgba(240, 134, 90, 0.12);
+  --szin-nyertes: #f4d35e;
+
+  --betutipus: 'Space Grotesk', 'Segoe UI', sans-serif;
+
+  --sugar: 14px;
+  --atmenet: 180ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 0%, #1a1d2c 0%, var(--szin-hatter) 55%);
+  color: var(--szin-szoveg);
+  font-family: var(--betutipus);
+  padding: 32px 16px;
+}
+
+
+
+.jatekter {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.fejlec {
+  text-align: center;
+}
+
+.cim {
+  margin: 0;
+  font-size: clamp(2rem, 6vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.alcim {
+  margin: 6px 0 0;
+  color: var(--szin-szoveg-halvany);
+  font-size: 0.95rem;
+}
+
+.jelzo {
+  font-weight: 700;
+  padding: 0 2px;
+}
+
+.jelzo--x { color: var(--szin-x); }
+.jelzo--o { color: var(--szin-o); }
+
+
+
+.allapotsav {
+  width: 100%;
+  text-align: center;
+  min-height: 28px;
+}
+
+.statusz-szoveg {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--szin-szoveg);
+  transition: color var(--atmenet);
+}
+
+.statusz-szoveg.statusz--nyert { color: var(--szin-x); }
+.statusz-szoveg.statusz--vesztett { color: var(--szin-o); }
+.statusz-szoveg.statusz--dontetlen { color: var(--szin-szoveg-halvany); }
+
+
+.tabla-keret {
+  width: 100%;
+  padding: 12px;
+  background: var(--szin-panel);
+  border-radius: calc(var(--sugar) + 6px);
+  box-shadow: 0 20px 45px -20px rgba(0, 0, 0, 0.6);
+}
+
+.tabla {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 8px;
+  aspect-ratio: 1 / 1;
+}
+
+.mezo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--szin-panel-vilagos);
+  border: none;
+  border-radius: var(--sugar);
+  font-family: inherit;
+  font-size: clamp(2rem, 10vw, 3rem);
+  font-weight: 700;
+  color: var(--szin-szoveg);
+  cursor: pointer;
+  transition: background var(--atmenet), transform var(--atmenet);
+}
+
+.mezo:hover:not(:disabled) {
+  background: #292d42;
+}
+
+.mezo:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.mezo:disabled {
+  cursor: default;
+}
+
+.mezo:focus-visible {
+  outline: 2px solid var(--szin-nyertes);
+  outline-offset: 2px;
+}
+
+.mezo--x { color: var(--szin-x); }
+.mezo--o { color: var(--szin-o); }
+
+
+.mezo .jel {
+  display: inline-block;
+  animation: jel-megjelenik 220ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes jel-megjelenik {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+.mezo.mezo--nyertes {
+  background: color-mix(in srgb, var(--szin-nyertes) 20%, var(--szin-panel-vilagos));
+  box-shadow: 0 0 0 2px var(--szin-nyertes) inset;
+  animation: nyertes-pulzalas 1.1s ease-in-out infinite;
+}
+
+@keyframes nyertes-pulzalas {
+  0%, 100% { box-shadow: 0 0 0 2px var(--szin-nyertes) inset, 0 0 12px 0 rgba(244, 211, 94, 0.15); }
+  50% { box-shadow: 0 0 0 2px var(--szin-nyertes) inset, 0 0 22px 4px rgba(244, 211, 94, 0.4); }
+}
+
+
+
+.eredmenyek {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.eredmeny {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 4px;
+  background: var(--szin-panel);
+  border-radius: var(--sugar);
+}
+
+.eredmeny-cimke {
+  font-size: 0.75rem;
+  color: var(--szin-szoveg-halvany);
+}
+
+.eredmeny-szam {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.eredmeny--x .eredmeny-szam { color: var(--szin-x); }
+.eredmeny--o .eredmeny-szam { color: var(--szin-o); }
+
+
+
+.lablec {
+  width: 100%;
+}
+
+.gomb-uj-jatek {
+  width: 100%;
+  padding: 14px;
+  background: var(--szin-panel-vilagos);
+  color: var(--szin-szoveg);
+  border: 1px solid var(--szin-racs);
+  border-radius: var(--sugar);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--atmenet), border-color var(--atmenet);
+}
+
+.gomb-uj-jatek:hover {
+  background: #292d42;
+  border-color: var(--szin-nyertes);
+}
+
+.gomb-uj-jatek:focus-visible {
+  outline: 2px solid var(--szin-nyertes);
+  outline-offset: 2px;
+}
+
+
+
+@media (prefers-reduced-motion: reduce) {
+  .mezo .jel,
+  .mezo.mezo--nyertes {
+    animation: none;
+  }
+  .mezo,
+  .gomb-uj-jatek,
+  .statusz-szoveg {
+    transition: none;
+  }
+}
+
+
+
+@media (max-width: 360px) {
+  .jatekter {
+    gap: 18px;
+  }
+  .eredmeny-cimke {
+    font-size: 0.65rem;
+  }
+}
