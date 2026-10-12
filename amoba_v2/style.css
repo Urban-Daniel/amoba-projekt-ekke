@@ -94,7 +94,7 @@ body {
   transition: color var(--atmenet);
 }
 
-.statusz-szoveg.statusz--nyert { color: var(--szin-x); }
+.statusz-szoveg.statusz--nyert { color: white; }
 .statusz-szoveg.statusz--vesztett { color: var(--szin-o); }
 .statusz-szoveg.statusz--dontetlen { color: var(--szin-szoveg-halvany); }
 
