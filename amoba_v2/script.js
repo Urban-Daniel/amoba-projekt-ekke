@@ -1,42 +1,24 @@
 'use strict';
 
-/**
- * Amőba játék — Játékos (X) vs. Gép (O)
- * A pálya állapotát egy 9 elemű, egydimenziós tömb tárolja (0–8 index).
- * Index elrendezés:
- *   0 | 1 | 2
- *   3 | 4 | 5
- *   6 | 7 | 8
- */
-
-// --------------------------------------------------------------------------
-// Konstansok
-// --------------------------------------------------------------------------
 
 const JATEKOS = 'X';
 const GEP = 'O';
 const URES = null;
 
-// Minden lehetséges nyerő kombináció (sorok, oszlopok, átlók)
+
 const NYERO_SOROK = [
-  [0, 1, 2], [3, 4, 5], [6, 7, 8], // sorok
-  [0, 3, 6], [1, 4, 7], [2, 5, 8], // oszlopok
-  [0, 4, 8], [2, 4, 6],            // átlók
+  [0, 1, 2], [3, 4, 5], [6, 7, 8], 
+  [0, 3, 6], [1, 4, 7], [2, 5, 8], 
+  [0, 4, 8], [2, 4, 6],            
 ];
 
 const KOZEP_INDEX = 4;
 
-// --------------------------------------------------------------------------
-// Állapot
-// --------------------------------------------------------------------------
 
 let tabla = ureTablaLetrehozasa();
 let jatekVege = false;
 let pontok = { X: 0, O: 0, dontetlen: 0 };
 
-// --------------------------------------------------------------------------
-// DOM elemek
-// --------------------------------------------------------------------------
 
 const tablaElem = document.getElementById('tabla');
 const statuszElem = document.getElementById('statuszSzoveg');
@@ -47,9 +29,6 @@ const pontDontetlenElem = document.getElementById('pontDontetlen');
 
 let mezoGombok = [];
 
-// --------------------------------------------------------------------------
-// Inicializálás
-// --------------------------------------------------------------------------
 
 function inicializal() {
   mezoGombokLetrehozasa();
@@ -77,9 +56,6 @@ function mezoGombokLetrehozasa() {
   }
 }
 
-// --------------------------------------------------------------------------
-// Játékmenet
-// --------------------------------------------------------------------------
 
 function ujJatekKezdese() {
   tabla = ureTablaLetrehozasa();
@@ -111,8 +87,6 @@ function mezoKattintas(index) {
   }
 
   statuszUzenetFrissitese('A gép gondolkodik…');
-
-  // Rövid késleltetés, hogy a gép lépése természetesebbnek hasson
   setTimeout(gepLepese, 400);
 }
 
@@ -159,10 +133,6 @@ function jatekLezarasa(nyeroSor, uzenet, statuszOsztaly, pontszamKulcs) {
   statuszUzenetFrissitese(uzenet, statuszOsztaly);
 }
 
-// --------------------------------------------------------------------------
-// Gép (bot) logikája — prioritási sorrend:
-//   1. Támadás  2. Védekezés  3. Közép  4. Véletlen mező
-// --------------------------------------------------------------------------
 
 function gepKovetkezoLepese(aktualisTabla) {
   const tamadoLepes = nyeroLepesKeresese(aktualisTabla, GEP);
@@ -176,10 +146,7 @@ function gepKovetkezoLepese(aktualisTabla) {
   return veletlenUresMezo(aktualisTabla);
 }
 
-/**
- * Megkeresi azt az üres mezőt, amellyel a megadott jel tulajdonosa
- * nyerne — ez szolgál támadásra és védekezésre is.
- */
+
 function nyeroLepesKeresese(aktualisTabla, jel) {
   for (const [a, b, c] of NYERO_SOROK) {
     const sor = [aktualisTabla[a], aktualisTabla[b], aktualisTabla[c]];
@@ -203,9 +170,6 @@ function veletlenUresMezo(aktualisTabla) {
   return uresMezok[veletlenIndex];
 }
 
-// --------------------------------------------------------------------------
-// Segédfüggvények
-// --------------------------------------------------------------------------
 
 function nyeroSorKeresese(aktualisTabla, jel) {
   return NYERO_SOROK.find(
@@ -229,8 +193,5 @@ function pontokFrissitese() {
   pontDontetlenElem.textContent = pontok.dontetlen;
 }
 
-// --------------------------------------------------------------------------
-// Indítás
-// --------------------------------------------------------------------------
 
 document.addEventListener('DOMContentLoaded', inicializal);
