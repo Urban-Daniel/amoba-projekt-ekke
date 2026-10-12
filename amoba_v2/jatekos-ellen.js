@@ -1,37 +1,22 @@
 'use strict';
 
-/**
- * Amőba játék — Játékos (X) vs. Játékos (O)
- * Egy gépen, ugyanazzal az egérrel, felváltva lépve.
- * A pálya állapotát egy 9 elemű, egydimenziós tömb tárolja (0–8 index).
- */
-
-// --------------------------------------------------------------------------
-// Konstansok
-// --------------------------------------------------------------------------
 
 const X_JEL = 'X';
 const O_JEL = 'O';
 const URES = null;
 
 const NYERO_SOROK = [
-  [0, 1, 2], [3, 4, 5], [6, 7, 8], // sorok
-  [0, 3, 6], [1, 4, 7], [2, 5, 8], // oszlopok
-  [0, 4, 8], [2, 4, 6],            // átlók
+  [0, 1, 2], [3, 4, 5], [6, 7, 8], 
+  [0, 3, 6], [1, 4, 7], [2, 5, 8], 
+  [0, 4, 8], [2, 4, 6],            
 ];
 
-// --------------------------------------------------------------------------
-// Állapot
-// --------------------------------------------------------------------------
 
 let tabla = ureTablaLetrehozasa();
 let aktualisJatekos = X_JEL;
 let jatekVege = false;
 let pontok = { X: 0, O: 0, dontetlen: 0 };
 
-// --------------------------------------------------------------------------
-// DOM elemek
-// --------------------------------------------------------------------------
 
 const tablaElem = document.getElementById('tabla');
 const statuszElem = document.getElementById('statuszSzoveg');
@@ -42,9 +27,6 @@ const pontDontetlenElem = document.getElementById('pontDontetlen');
 
 let mezoGombok = [];
 
-// --------------------------------------------------------------------------
-// Inicializálás
-// --------------------------------------------------------------------------
 
 function inicializal() {
   mezoGombokLetrehozasa();
@@ -72,9 +54,6 @@ function mezoGombokLetrehozasa() {
   }
 }
 
-// --------------------------------------------------------------------------
-// Játékmenet
-// --------------------------------------------------------------------------
 
 function ujJatekKezdese() {
   tabla = ureTablaLetrehozasa();
@@ -133,9 +112,6 @@ function jatekLezarasa(nyeroSor, uzenet, statuszOsztaly, pontszamKulcs) {
   statuszUzenetFrissitese(uzenet, statuszOsztaly);
 }
 
-// --------------------------------------------------------------------------
-// Segédfüggvények
-// --------------------------------------------------------------------------
 
 function nyeroSorKeresese(aktualisTabla, jel) {
   return NYERO_SOROK.find(
@@ -159,8 +135,5 @@ function pontokFrissitese() {
   pontDontetlenElem.textContent = pontok.dontetlen;
 }
 
-// --------------------------------------------------------------------------
-// Indítás
-// --------------------------------------------------------------------------
 
 document.addEventListener('DOMContentLoaded', inicializal);
